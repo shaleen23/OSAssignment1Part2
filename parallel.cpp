@@ -46,7 +46,7 @@ void createChild()
         pid = fork();
         if (pid < 0)
         {
-            cerr << "No, no fork";
+            cout << "no fork :("<<endl;
             exit(1);
         }
 
