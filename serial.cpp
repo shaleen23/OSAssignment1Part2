@@ -10,9 +10,10 @@
 #include <vector>
 using namespace std; 
 
-vector<string> url;
+vector<string> url; //create a vector to hold all the urls
 
-void load_url()
+void load_url() //function will open the urls.txt file, while it is parsing through the file and doesn't reach the end of the file, add the content of the file to the string variable
+                //afterwards, push the string variable to the vector
 {
   string urlLine;
   ifstream urlFile("urls.txt");
@@ -36,7 +37,7 @@ void load_url()
 }
 
 
-void createChild()
+void createChild() //function will create a child node based off the value of the process ID 
 {
   pid_t pid;
   pid = fork();
@@ -66,36 +67,9 @@ int main()
   url.pop_back();
   createChild();
   wait(NULL);
+  cout<<"Complete :)"<<endl;
   return 0;
 }
 
 
 
-/*
-    pid_t pid; //create process ID 
-
-    int i = 0; //create a counter to iterate through list
-    ifstream fileInput; 
-
-    vector <string> urlList; //create a vector of type string called urlList to store all the urls 
-    string str;
-    while(getline(fileInput, str)) //while there are strings in the file, add them to the vector 
-    {
-        urlList.push_back(str);
-    }
-  pid = fork(); //set process ID to fork
-
-  for(int i = 0; i< urlList.size(); i++) //iterate through the vector 
-  {
-      if(pid == -1) //if the process ID is Null, exit the code 
-      {
-          printf("Process failed");
-          return 0;
-      }
-      else if(pid == 0) //if the process ID value is 0, replace the current process image with a new process image 
-      {
-        execlp("/usr/bin/wget", "wget", urlList[i] ,NULL);  
-      }
-  }  
-}
-*/
