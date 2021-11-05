@@ -75,7 +75,7 @@ int main()
      vector<string> urls;
 
   load_url();
-  createChild();  //4
+  createChild();  
 
   while (counter > 0) {
     wait(NULL);
